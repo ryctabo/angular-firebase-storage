@@ -1,0 +1,14 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .item {
+    padding: 24px;
+    margin: 0 auto;
+  }
+}
+
+.hidden {
+  display: none;
+}
