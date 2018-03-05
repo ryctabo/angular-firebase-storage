@@ -7,6 +7,19 @@
     padding: 24px;
     margin: 0 auto;
   }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    background: #F0F0F0;
+    width: 100%;
+    padding: 24px;
+    text-align: center;
+    font-size: 1em;
+    color: rgba($color: #000, $alpha: .7);
+    a {
+      font-size: 1em;
+    }
+  }
 }
 
 .hidden {
