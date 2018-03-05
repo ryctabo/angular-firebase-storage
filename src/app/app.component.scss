@@ -12,3 +12,13 @@
 .hidden {
   display: none;
 }
+
+a {
+  color: #1976D2;
+  font-size: .8em;
+  margin-top: 16px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,15 +1,20 @@
-<mat-progress-bar [value]="uploadProgress | async"></mat-progress-bar>
 <div class="container">
+  <mat-progress-bar [value]="uploadProgress | async"></mat-progress-bar>
   <div class="item">
-    Progress: {{ uploadProgress | async }}
+    Progress: {{ (uploadProgress | async) / 100 | percent }}
+  </div>
+  <div class="item" style="max-width: 600px">
+    <section>
+      <span style="color: grey; font-size: .8em">
+        {{ uploadURL |async }}
+      </span>
+    </section>
+    <section *ngIf="uploadURL && (uploadURL | async) !== null && (uploadURL | async).length">
+      <a [href]="uploadURL | async" target="_blank">Open image!</a>
+    </section>
   </div>
   <div class="item">
-    <span style="color: grey; font-size: .8em">
-      {{ uploadURL |async }}
-    </span>
-  </div>
-  <div class="item">
-    <input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">
+    <input #inputFile class="hidden" type="file" (change)="upload($event)" accept="image/*">
     <button mat-raised-button color="primary" (click)="inputFile.click()">Upload</button>
   </div>
 </div>
