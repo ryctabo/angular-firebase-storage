@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import { Observable } from 'rxjs/Observable';
+import { AngularFireStorage } from '@angular/fire/storage';
+
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +24,20 @@ export class AppComponent {
     // Generate a random ID
     const randomId = Math.random().toString(36).substring(2);
     console.log(randomId);
+    const filepath = `images/${randomId}`;
+
+    const fileRef = this._storage.ref(filepath);
 
     // Upload image
-    const task = this._storage.upload(`images/${randomId}`, file);
+    const task = this._storage.upload(filepath, file);
+
+    // Observe percentage changes
     this.uploadProgress = task.percentageChanges();
-    this.uploadURL = task.downloadURL();
+
+    // Get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(() => this.uploadURL = fileRef.getDownloadURL())
+    ).subscribe();
   }
 
 }
