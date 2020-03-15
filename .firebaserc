@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-firebase-blog-c0906": {
+      "hosting": {
+        "angular-firebase-storage": [
+          "angular-firebase-blog-c0906"
+        ]
+      }
+    }
+  }
+}

@@ -9,7 +9,10 @@
         {{ uploadURL |async }}
       </span>
     </section>
-    <section *ngIf="uploadURL && (uploadURL | async) !== null && (uploadURL | async).length">
+    <section>
+      <img [src]="uploadURL | async" width="500">
+    </section>
+    <section *ngIf="uploadURL && (uploadURL | async) !== null">
       <a [href]="uploadURL | async" target="_blank">Open image!</a>
     </section>
   </div>

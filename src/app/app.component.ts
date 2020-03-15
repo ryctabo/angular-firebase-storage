@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import 'firebase/storage';
 
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -15,7 +16,7 @@ export class AppComponent {
 
   uploadURL: Observable<string>;
 
-  constructor(private _storage: AngularFireStorage) { }
+  constructor(private storage: AngularFireStorage) { }
 
   upload(event) {
     // Get input file
@@ -26,10 +27,10 @@ export class AppComponent {
     console.log(randomId);
     const filepath = `images/${randomId}`;
 
-    const fileRef = this._storage.ref(filepath);
+    const fileRef = this.storage.ref(filepath);
 
-    // Upload image
-    const task = this._storage.upload(filepath, file);
+    // Upload Image
+    const task = this.storage.upload(filepath, file);
 
     // Observe percentage changes
     this.uploadProgress = task.percentageChanges();

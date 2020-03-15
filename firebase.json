@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "angular-firebase-storage",
+      "public": "dist/angular-firebase-storage",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
